@@ -1,7 +1,7 @@
 ## Pocketchange
 This is a work in progress. I am going to create a React App that displays the price of certain cryptocurrencies of your choosing.
 
-#To run in Development:
+# To run in Development:
 1. git clone repository
 2. npm install inside root
 3. npm install inside react-app/
@@ -9,7 +9,7 @@ This is a work in progress. I am going to create a React App that displays the p
 5. npm start inside react-app/ ( this will start the dev build inport 3000)
 6. Go to localhost:3000
 
-#To run in Production:
+# To run in Production:
 1. git clone repository
 2. npm install inside root
 3. npm install inside react-app/
