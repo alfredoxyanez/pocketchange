@@ -1,5 +1,5 @@
 ## Pocketchange
-This is a work in progress. I am to create a React App that displays the price of certain cryptocurrencies of your choosing.
+This is a work in progress. I am going to create a React App that displays the price of certain cryptocurrencies of your choosing.
 
 #To run in Development:
 1. git clone repository
