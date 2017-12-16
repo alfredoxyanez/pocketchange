@@ -20,6 +20,7 @@ import {
 } from 'redux'
 import "bootstrap/dist/css/bootstrap.css";
 import GetNewCoin from '../actions/getNewCoin'
+import InitialLoad2 from '../actions/initialLoad2';
 
 class ExtraCoinCard extends Component {
   constructor(props) {
@@ -29,11 +30,16 @@ class ExtraCoinCard extends Component {
     };
   }
   getNewCoin = () => {
-    console.log(this.state.value);
+    this.props.getNewCoin(this.state.value, this.props.initCoins);
+    this.props.initialLoad2(this.props.initCoins);
+    this.setState({
+      value: ''
+    });
   }
   handleChange = (event) => {
+    var newstr = event.target.value.replace(/ +?/g, '').toUpperCase();
     this.setState({
-      value: event.target.value
+      value: newstr
     });
   }
 
@@ -56,10 +62,17 @@ class ExtraCoinCard extends Component {
 
 }
 
+function mapStateToProps(state) {
+  return {
+    initCoins: state.initData.coins
+  }
+}
+
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     getNewCoin: GetNewCoin,
+    initialLoad2: InitialLoad2,
   }, dispatch)
 }
 
-export default connect(matchDispatchToProps)(ExtraCoinCard);
+export default connect(mapStateToProps, matchDispatchToProps)(ExtraCoinCard);
