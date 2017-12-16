@@ -56,7 +56,6 @@ class CoinCard extends Component {
             <CardBody>
               <CardSubtitle>{this.props.params.USD.PRICE}</CardSubtitle>
               <CardText>{this.props.params.USD.MARKET}  </CardText>
-              <CardText>Some quick example text </CardText>
             </CardBody>
           </Card>
         </div>
