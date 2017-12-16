@@ -1,24 +1,16 @@
 import axios from 'axios';
-const InitialLoad = () => {
+const GetNewCoin = (newCoin, allCoins) => {
   return function(dispatch) {
-    axios.get(window.location.href + '/coins')
-      .catch(err => {
-        alert('There was an error trying to do the initial fetch')
-      })
-      .then(response => {
-        var coins = []
-        for (var i = 0; i < response.data.length; i++) {
-          coins.push(response.data[i].symbol)
-        }
-        console.log(coins);
-        dispatch({
-          type: 'INIT_LIST',
-          payload: {
-            coins: coins,
-          }
-        })
-      })
+    var newList = allCoins;
+    newList.push(newCoin)
+    console.log(newList);
+    dispatch({
+      type: 'INIT_LIST',
+      payload: {
+        coins: newList,
+      }
+    })
   }
 }
 
-export default InitialLoad;
+export default GetNewCoin;
