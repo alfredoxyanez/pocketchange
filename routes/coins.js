@@ -25,14 +25,14 @@ const forward_get = (req, res, next) => {
 const forward_get2 = (req, res, next) => {
   console.log("in /coins2");
   console.log(req.params.coins);
-  const url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + req.params.coins + ',&tsyms=BTC,USD,EUR'
+  const url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + req.params.coins + ',&tsyms=USD'
   //const url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + req.params.coins + '&tsyms=USD&e=Coinbase'
   axios.get(url)
     .catch(err => {
       alert('There was an error trying to get all coins')
     })
     .then(response => {
-      //console.log(response.data.RAW);
+      console.log(response.data.DISPLAY);
       res.json(response.data.DISPLAY);
     })
 }

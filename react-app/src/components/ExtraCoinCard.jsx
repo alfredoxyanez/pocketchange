@@ -37,7 +37,7 @@ class ExtraCoinCard extends Component {
     });
   }
   handleChange = (event) => {
-    var newstr = event.target.value.replace(/ +?/g, '').toUpperCase();
+    var newstr = event.target.value.replace(/ +?/g, '').replace(/[^a-zA-Z]/, '').toUpperCase();
     this.setState({
       value: newstr
     });
@@ -51,7 +51,7 @@ class ExtraCoinCard extends Component {
           <CardHeader>Add Coin</CardHeader>
           <CardBody>
             <InputGroup>
-              <Input placeholder="coin name" value={this.state.value} onChange={this.handleChange} />
+              <Input placeholder="Coin Name" value={this.state.value} onChange={this.handleChange} />
               <InputGroupButton><Button color="primary" onClick={this.getNewCoin}> ADD</Button></InputGroupButton>
             </InputGroup>
           </CardBody>

@@ -10,7 +10,14 @@ import {
 import {
   Container,
   Row,
-  Col
+  Col,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
 } from 'reactstrap'
 import ReactJson from 'react-json-view'
 import InitialLoad from '../actions/initialLoad';
@@ -21,18 +28,30 @@ import ExtraCoinCard from './ExtraCoinCard'
 
 // Spinner loads when a user clicks on a country
 class Apicall extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.state = {
+      collapsed: true
+    };
+  }
+
+  toggleNavbar() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  }
+
   componentWillMount() {
-    //this.props.initialLoad();
     this.props.initialLoad2(this.props.initCoins);
   }
-  // componentDidUpdate() {
-  //   if (this.props.initPrices.length < 1) {
-  //     console.log("<1");
-  //     this.props.initialLoad2(this.props.initCoins);
-  //   }
-  // }
+  componentDidMount() {
+    this.interval = setInterval(() => this.props.initialLoad2(this.props.initCoins), 15000);
+  }
 
   render() {
+    // console.log(this.state.time);
     if (this.props.initPrices.length < 1) {
       return (
         <div>
@@ -42,7 +61,7 @@ class Apicall extends Component {
     } else {
       const allPrices = this.props.initPrices;
       let coinCards = Object.keys(allPrices).map(function(key) {
-        console.log(key);
+        // console.log(key);
         return (
           <Col sm="3">
             <CoinCard coin={key} params={allPrices[key]}></CoinCard>
@@ -51,6 +70,20 @@ class Apicall extends Component {
       })
       return (
         <div>
+          <Navbar color="faded" light>
+            <NavbarBrand href="/" className="mr-auto">Pocket Change</NavbarBrand>
+            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+            <Collapse isOpen={!this.state.collapsed} navbar>
+              <Nav navbar>
+                <NavItem>
+                  <NavLink href="#">Nothing1</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Nothing2</NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Navbar>
           <Container fluid>
             <Row>
               {coinCards}
