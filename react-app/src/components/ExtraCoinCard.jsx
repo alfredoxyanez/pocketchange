@@ -29,7 +29,8 @@ class ExtraCoinCard extends Component {
       value: ''
     };
   }
-  getNewCoin = () => {
+  getNewCoin = (e) => {
+    e.preventDefault()
     this.props.getNewCoin(this.state.value, this.props.initCoins);
     this.props.initialLoad2(this.props.initCoins);
     this.setState({
@@ -50,10 +51,17 @@ class ExtraCoinCard extends Component {
         <Card body outline color="primary">
           <CardHeader>Add Coin</CardHeader>
           <CardBody>
-            <InputGroup>
-              <Input placeholder="Coin Name" value={this.state.value} onChange={this.handleChange} />
-              <InputGroupButton><Button color="primary" onClick={this.getNewCoin}> ADD</Button></InputGroupButton>
-            </InputGroup>
+            <p> </p>
+            <p> </p>
+            <form onSubmit={this.getNewCoin}>
+              <InputGroup >
+                <Input placeholder="Coin Name" value={this.state.value} onChange={this.handleChange} />
+                <InputGroupButton><Button color="primary" type="submit" > ADD</Button></InputGroupButton>
+              </InputGroup>
+            </form>
+
+            <p> </p>
+            <p> </p>
           </CardBody>
         </Card>
       </div>
