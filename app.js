@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var coins = require('./routes/coins');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(`${__dirname}/react-app/build`));
 app.use('/users', users);
+app.use('/coins', coins);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
