@@ -60,11 +60,11 @@ class Apicall extends Component {
       )
     } else {
       const allPrices = this.props.initPrices;
-      let coinCards = Object.keys(allPrices).map(function(key) {
-        // console.log(key);
+      let coinCards = Object.keys(allPrices).map(function(name) {
+        var key2 = name[0] + name.substring(1).toLowerCase()
         return (
-          <Col sm="3">
-            <CoinCard coin={key} params={allPrices[key]}></CoinCard>
+          <Col key={name} sm="3">
+            <CoinCard  coin={name} coin2 ={key2} params={allPrices[name]}></CoinCard>
           </Col>
         )
       })
